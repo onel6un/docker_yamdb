@@ -10,7 +10,7 @@ class UserAdmin(admin.ModelAdmin):
     # Добавляем интерфейс для поиска
     search_fields = ('id', 'username', 'first_name', 'last_name',
                      'email', 'role')
-    # Добавляем возможность фильтрации 
+    # Добавляем возможность фильтрации
     list_filter = ('id', 'username', 'first_name', 'last_name',
                    'email', 'role')
 

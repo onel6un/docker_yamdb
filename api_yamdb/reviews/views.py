@@ -2,8 +2,6 @@ from rest_framework import viewsets
 from rest_framework import filters
 from rest_framework import mixins
 
-
-
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import *
@@ -20,7 +18,7 @@ class CategoriesAPI(viewsets.GenericViewSet, mixins.ListModelMixin,
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('name',) 
+    search_fields = ('name',)
     pagination_class = APIPagination
 
 
@@ -31,7 +29,7 @@ class GenriesAPI(viewsets.GenericViewSet, mixins.ListModelMixin,
     queryset = Genre.objects.all()
     serializer_class = GenresSerializer
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('name',) 
+    search_fields = ('name',)
     pagination_class = APIPagination
 
 
@@ -45,8 +43,10 @@ class TitlesAPI(viewsets.ModelViewSet):
 
     # использование двух сериализаторов диктуеться ТЗ,
     # для записи поля genre и category используеться slugRelatedField
-    # для чтения поля genre в виде списка словарей используеться вложенный сериализатор,
-    # для чтения поля category в виде словаря используеться вложенный сериализатор,
+    # для чтения поля genre в виде списка словарей используеться
+    #  вложенный сериализатор,
+    # для чтения поля category в виде словаря используеться
+    #  вложенный сериализатор,
     # что и требует отдельных сериализаторов для чтения и записи
     def get_serializer_class(self):
         print(self.action)
@@ -65,7 +65,8 @@ class ReviewsAPI(viewsets.ModelViewSet):
         if self.action in ('retrieve', 'list'):
             # Вернем обновленный перечень используемых пермишенов
             return (ReadOnly(),)
-        # Для остальных ситуаций оставим текущий перечень пермишенов без изменений
+        # Для остальных ситуаций оставим текущий перечень
+        #  пермишенов без изменений
         return super().get_permissions()
 
     def get_queryset(self):
@@ -92,7 +93,8 @@ class CommentsAPI(viewsets.ModelViewSet):
         if self.action in ('retrieve', 'list'):
             # Вернем обновленный перечень используемых пермишенов
             return (ReadOnly(),)
-        # Для остальных ситуаций оставим текущий перечень пермишенов без изменений
+        # Для остальных ситуаций оставим текущий перечень
+        #  пермишенов без изменений
         return super().get_permissions()
 
     def get_queryset(self):

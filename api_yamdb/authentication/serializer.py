@@ -45,7 +45,7 @@ class GetTokenSerializer(serializers.Serializer):
         user = authenticate(username=username, password=password)
 
         if user is None:
-            raise serializers.ValidationError('Invalid username and/or password')
+            raise serializers.ValidationError('Invalid username and password')
 
         if not user.is_active:
             raise serializers.ValidationError(
@@ -88,5 +88,7 @@ class UsersSerializer(serializers.ModelSerializer):
 class UserSelfSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'email', 'first_name', 'last_name', 'bio', 'role')
+        fields = (
+            'username', 'email', 'first_name', 'last_name', 'bio', 'role'
+        )
         read_only_fields = ('role',)

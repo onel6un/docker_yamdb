@@ -20,7 +20,7 @@ class GenreInline(admin.TabularInline):
 
 class TitleAdmin(admin.ModelAdmin):
     inlines = (
-       GenreInline,
+        GenreInline,
     )
     list_display = ('id', 'name', 'year', 'category')
     search_fields = ('id', 'name', 'year', 'category')

@@ -49,10 +49,10 @@ class UserManagerCustom(UserManager):
 
 
 CHOICES = (
-        ('user', 'пользователь'),
-        ('admin', 'админ'),
-        ('moderator', 'модератор'),
-    )
+    ('user', 'пользователь'),
+    ('admin', 'админ'),
+    ('moderator', 'модератор'),
+)
 
 
 class User(AbstractUser):

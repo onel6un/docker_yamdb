@@ -4,9 +4,6 @@ from rest_framework import serializers
 from django.db.models import Avg
 
 from .models import *
-from authentication.models import User
-
-
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -71,7 +68,7 @@ class ReviewsSerializer(serializers.ModelSerializer):
         slug_field='username',
         read_only=True
     )
-    
+
     class Meta:
         model = Review
         fields = ('id', 'text', 'author', 'score', 'pub_date', 'title')

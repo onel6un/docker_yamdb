@@ -12,8 +12,16 @@ router = routers.DefaultRouter()
 router.register('v1/categories', CategoriesAPI)
 router.register('v1/genres', GenriesAPI)
 router.register('v1/titles', TitlesAPI)
-router.register(r'v1/titles/(?P<titles_id>\d+)/reviews', ReviewsAPI, basename='titles')
-router.register(r'v1/titles/(?P<titles_id>\d+)/reviews/(?P<review_id>\d+)/comments', CommentsAPI, basename='comments')
+router.register(
+    r'v1/titles/(?P<titles_id>\d+)/reviews',
+    ReviewsAPI,
+    basename='titles'
+)
+router.register(
+    r'v1/titles/(?P<titles_id>\d+)/reviews/(?P<review_id>\d+)/comments',
+    CommentsAPI,
+    basename='comments'
+)
 
 urlpatterns = [
     path('', include(router.urls)),

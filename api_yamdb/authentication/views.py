@@ -40,7 +40,7 @@ class UsersAPI(viewsets.ModelViewSet):
     permission_classes = (AdminOnly,)
     pagination_class = APIPagination
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('username',) 
+    search_fields = ('username',)
 
 
 class UserSelfAPI(APIView):
@@ -59,4 +59,7 @@ class UserSelfAPI(APIView):
         )
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data, status=status.HTTP_206_PARTIAL_CONTENT)
+        return Response(
+            serializer.data,
+            status=status.HTTP_206_PARTIAL_CONTENT
+        )

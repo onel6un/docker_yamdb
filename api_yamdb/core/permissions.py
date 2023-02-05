@@ -4,7 +4,7 @@ from rest_framework import permissions
 class ReadOnly(permissions.BasePermission):
 
     def has_permission(self, request, view):
-        return request.method in permissions.SAFE_METHODS 
+        return request.method in permissions.SAFE_METHODS
 
 
 class AdminOrReadOnly(permissions.BasePermission):
@@ -34,9 +34,8 @@ class AdminOrReadOnly(permissions.BasePermission):
 
 
 class AuthorOrModeratorOtherwiseReadOnly(permissions.BasePermission):
-    '''Право на изменение\удаление экземпляра, есть у
-        admin, moderator, superuser и автора экземпляра'''   
-    
+    '''Право на изменение или удаление экземпляра, есть у
+        admin, moderator, superuser и автора экземпляра'''
     def has_permission(self, request, view):
         '''Условия разрешения на выполнение запроса для получения
         списка объектов или создания нового объекта'''
@@ -45,7 +44,7 @@ class AuthorOrModeratorOtherwiseReadOnly(permissions.BasePermission):
         if request.user.is_authenticated:
             return True
         return False
-        
+
     def has_object_permission(self, request, view, obj):
         if not request.user.is_authenticated:
             return False
