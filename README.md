@@ -41,15 +41,17 @@ PostgreSQL:13.0
 
 Из этой же директории ./infra выполните:
 
-    $ docker-compose up -d
-    $ docker-compose exec web python manage.py makemigrations reviews authentication
-    $ docker-compose exec web python manage.py migrate
-    $ docker-compose exec web python manage.py loaddata fixtures.json 
-    $ docker-compose exec web python manage.py collectstatic
+    $ docker compose up -d
+    $ docker compose exec web python manage.py makemigrations reviews authentication
+    $ docker compose exec web python manage.py migrate
+    $ docker compose exec web python manage.py loaddata fixtures.json 
+    $ docker compose exec web python manage.py collectstatic
 
 ### Админ зона
 Для доступа к админ зоне создайте суперпользователя
-    $ docker-compose exec web python manage.py python manage.py createsuperuser
+
+    $ docker compose exec web python manage.py python manage.py createsuperuser
+
 она будет доступна по http://localhost/admin/
 
 ### Документация
